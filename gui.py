@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 import random
+from bubbleSort import bubbleSort
 
 
 root = Tk()
@@ -14,7 +15,7 @@ selected_alg = StringVar()
 data = []
 
 
-def drawData(data):
+def drawData(data, colorList):
     canvas.delete("all")
     c_height = 380
     c_width = 550
@@ -27,9 +28,9 @@ def drawData(data):
         y0 = c_height - height * 340
         x1 = (i + 1) * x_width + offset
         y1 = c_height
-        canvas.create_rectangle(x0, y0, x1, y1, fill = "red")
+        canvas.create_rectangle(x0, y0, x1, y1, fill = colorList[i])
         canvas.create_text(x0 + 2, y0, anchor = SW, text = str(data[i]))
-
+    root.update_idletasks()
 
 def generate():
     global data
@@ -41,11 +42,12 @@ def generate():
     for _ in range(size):
         data.append(random.randrange(minVal, maxVal + 1))
     
-    drawData(data)
+    drawData(data, ["red" for i in range(len(data))])
 
 
 def startAlgorithm():
     global data
+    bubbleSort(data, drawData, speedScale.get())
 
 
 # frame
