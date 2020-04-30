@@ -15,6 +15,13 @@ selected_alg = StringVar()
 data = []
 
 
+def disableWidgets():
+    sizeEntry.config(state = "disabled")
+    minEntry.config(state = "disabled")
+    maxEntry.config(state = "disabled")
+    speedScale.config(state = "disabled")
+    algMenu.config(state = "readonly")
+
 def drawData(data, colorList):
     canvas.delete("all")
     c_height = 380
@@ -47,6 +54,7 @@ def generate():
 
 def startAlgorithm():
     global data
+    disableWidgets()
     bubbleSort(data, drawData, speedScale.get())
 
 
