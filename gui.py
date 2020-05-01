@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import random
 from bubbleSort import bubbleSort
+from mergeSort import merge_sort
 
 
 root = Tk()
@@ -55,7 +56,11 @@ def generate():
 def startAlgorithm():
     global data
     disableWidgets()
-    bubbleSort(data, drawData, speedScale.get())
+    if algMenu.get()=='Bubble Sort':
+        bubbleSort(data, drawData, speedScale.get())
+    elif algMenu.get() == 'Merge Sort':
+        merge_sort(data, drawData, speedScale.get())
+        
 
 
 # frame
