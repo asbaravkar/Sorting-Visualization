@@ -6,6 +6,7 @@ from mergeSort import merge_sort
 from quicksort import quick_sort
 
 
+
 root = Tk()
 root.title("Visualizing Sorting Algorithms")
 root.maxsize(900, 600)
